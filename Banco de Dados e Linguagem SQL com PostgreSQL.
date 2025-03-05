@@ -1,0 +1,124 @@
+create table Proprietario (
+	idproprietario integer not null,
+	nome varchar (100) not null,
+	cpf varchar (11) not null,
+	email varchar (60),
+	telefone integer not null,
+       
+	
+	constraint pk_prp_idproprietario primary key (idproprietario)
+	)
+	
+	insert into Proprietario (idproprietario, cpf, nome,email, telefone)
+	values(1, '78095298700', 'Rosana Bonilha de Abreu','bonilharosana@gmail.com','992049589');
+	insert into Proprietario (idproprietario, cpf, nome, email,telefone)
+	values(2, '05187444778', 'Stefania Rosa L Mourão', 'jorgepoco09@gmail.com', '0');
+	insert into Proprietario (idproprietario, cpf, nome, email,telefone)
+	values(3, '60968079768', 'Paulo Roberto Pereira', 'sem email', '984610529');
+
+
+	 )
+ create table Agendamento(
+		 idagendamento integer not null,
+		 horário time not null,
+		 data_visita date not null,
+		 pessoa char (50) not null,
+		 imóvel varchar not null,
+
+		 
+		 
+		 constraint pk_agm_idagendamento primary key (idagendamento)
+		 
+	)
+		
+		 insert into Agendamento (idagendamento, horário, data_visita, pessoa, imóvel)
+		 values (1, '14:00', '2024-06-18','Carlos', 'Rua 2 de Fevereiro 606 apt 106');
+		 insert into Agendamento (idagendamento, horário, data_visita, pessoa, imóvel)
+		 values (2, '15:30', '2024-06-21','Mariana', 'Rua Padre Manuel da Nóbrega 1029');
+		 insert into Agendamento (idagendamento, horário, data_visita, pessoa, imóvel)
+		 values (3, '17:00', '2024-06-25','Gabriel', 'Rua Miguel Ângelo 769 bl 5');
+
+
+		alter table Proprietario add idagendamento integer;
+		alter table Agendamento add constraint fk_Proprietario_idproprietario foreign key (idagendamento) references Agendamento (idagendamento);
+
+create table Imóvel(
+	idimovel integer not null,
+	locador varchar (100) not null,
+	dormitórios integer not null,
+        valor_aluguel double precision, 
+	valor_condomínio double precision not null,
+	valor_iptu double precision not null,
+	valor_taxa_incêndio double precision not null,
+
+	
+	constraint pk_im_idimovel primary key (idimovel)
+)
+insert into Imovel (idimóvel, locador, dormitórios, valor_aluguel, valor_condomínio, valor_iptu, valor_taxa_incêndio)
+values (1, 'Rosana Bonilha de Abreu', '1', '750.00', '659.89', '0', '40.00');
+insert into Imovel (idimóvel, locador, dormitórios, valor_aluguel, valor_condomínio, valor_iptu, valor_taxa_incêndio)
+values (2, 'Paulo Roberto Pereira', '2', '700.00', '612.45', '0', '101.00');
+insert into Imovel (idimóvel, locador, dormitórios, valor_aluguel, valor_condomínio, valor_iptu, valor_taxa_incêndio)
+values(3, 'Estefânia Rosa Lourenço Mourão', '2', '750.00', '300.00', '0', '101.00');
+insert into Imovel (idimóvel, locador, dormitórios, valor_aluguel, valor_condomínio, valor_iptu, valor_taxa_incêndio)
+values(4, 'Estefânia Rosa Lourenço Mourão', '1', '700.00', '300.00', '0', '40.00');
+
+
+
+alter table Imóvel add idagendamento integer;
+	alter table Agendamento add constraint fK_Imóvel_idimovel foreign key (idagendamento) references Agendamento (idagendamento);
+
+
+create table Pessoa(
+	idpessoa integer not null,
+	nome varchar (100) not null,
+	cpf varchar (11) not null,
+	telefone integernot null,
+        email varchar (40),
+	
+	constraint pk_pe_idpessoa primary key (idpessoa)
+	
+	)
+
+	insert into Pessoa (idpessoa, nome, cpf, telefone, email)
+	values(1, 'Carlos', '12345678912','994618905', 'carlosb35@gmail.com');
+	insert into Pessoa (idpessoa, nome, cpf, telefone, email)
+	values(2, 'Mariana', '56782300911','983020511', 'sem email');
+	insert into Pessoa (idpessoa, nome, cpf, telefone, email)
+	values(3, 'Gabriel', '35874699013','985293770', 'gabriellg@hotmail.com');
+
+	alter table Pessoa add idagendamento integer;
+	alter table Agendamento add constraint fK_Pessoa_idpessoa foreign key (idagendamento) references Agendamento (idagendamento);
+
+create table Endereço(
+idendereco integer not null,
+logradouro varchar (100) not null,
+bairro varchar (50) not null,
+complemento integer not null,
+
+
+constraint pk_en_idendereco primary key (idendereco)
+	
+	)
+
+	insert into Endereço (idendereco, , logradouro, bairro, complemento)
+	values(1, 'Rua Padre Manuel da Nóbrega 1029', 'Quintino', '203');
+insert into Endereço (idendereco, logradouro, bairro, complemento)
+	values(2,'Rua Padre Manuel da Nóbrega 1029', 'Quintino', '201')
+insert into Endereço (idendereco, logradouro, bairro, complemento)
+	values(3, 'Rua Padre Manuel da Nóbrega 1029', 'Quintino', '304')
+insert into Endereço (idendereco, logradouro, bairro, complemento)
+	values(4, 'Rua Padre Manuel da Nóbrega 1029', 'Quintino', '305')
+insert into Endereço (idendereco, logradouro, bairro, complemento)
+	values(5, 'Rua Padre Manuel da Nóbrega 1029', 'Quintino', '301')
+insert into Endereço (idendereco, logradouro, bairro, complemento)
+	values(6, 'Rua Padre Manuel da Nóbrega 1029', 'Quintino', '302')
+insert into Endereço (idendereco, logradouro, bairro, complemento)
+	values(7, 'Rua 2 de Fevereiro 616', 'Encantado', '106')
+insert into Endereço (idendereco, logradouro, bairro, complemento)
+	values(8, 'Rua Miguel Ângelo 769 bl 5', 'Cachambi', '401')
+
+
+	alter table Imóvel add idproprietario integer;
+	alter table Proprietário add constraint fK_Imóvel_idimovel foreign key (idproprietario) references Proprietário (idproprietario); NÃO EXECUTEI NO BD
+
