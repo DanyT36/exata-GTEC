@@ -1,0 +1,36 @@
+create table Cliente(
+	
+	idcliente integer not null,
+	nome varchar (50) not null,
+	sobrenome varchar (50) not null,
+	email varchar (30),
+	Data_cadastro date not null,
+	Hora time not null,
+	ativo integer,
+	
+	constraint pk_cln_idcliente primary key (idcliente)
+	)
+	insert into cliente (idcliente, nome, sobrenome,email, Data_cadastro,hora, ativo)
+	values(1, 'Afonso', 'teste', 'afonso@targetwork.com.br','2021-03-23','15:13:31', null);
+	
+	insert into cliente (idcliente, nome, sobrenome,email, Data_cadastro,hora, ativo)
+	values(2, 'teste', 'criacao', 'teste@teste.com','2021-03-23','17:44:27', null);
+	
+	insert into cliente (idcliente, nome, sobrenome,email, Data_cadastro,hora, ativo)
+	values(3, 'Fulano', 'De Tal', 'fulano@gmail.com','2021-03-23','17:45:06', null);
+	 )
+	 create table Produto(
+		 idProduto integer not null,
+		 nome varchar (50) not null,
+		 valor double precision not null,
+		 disponivel integer,
+		 idCliente integer not null,
+		 
+constraint pk_pd_idProduto primary key (idProduto)
+		 )
+		 insert into Produto (idProduto, nome, valor,disponivel,idcliente)
+	values(1, 'Chocolate', '100.00', null, 1);
+	insert into Produto (idProduto, nome, valor,disponivel,idcliente)
+	values(2, 'Banana', '95.00', null, 1);
+	)
+	alter table Produto add constraint fk_pd_idcliente foreign key (idcliente) references Cliente (idcliente);
